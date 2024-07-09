@@ -12,12 +12,13 @@ class StableDiffusion(object):
         self.device = self.initialize_device(device)
         self.pipeline = self.instantiate_pipeline(ckpt_name, scheduler_name, self.device)
     
-    def generate(self, prompt):
-        "Returns the generated image based on given text prompt"
-        image = self.pipeline(prompt).images[0]
-        image.show()
-        image.save("generated_image.jpg")
-        return image
+    def generate(self, prompts, save=True, show=True):
+        "Returns the list of generated images based on given text prompts"
+        images = self.pipeline(prompts).images
+        for i, image in enumerate(images):
+            if save: image.save(f"generated_image_prompt_{i}.jpg")
+            if show: image.show()
+        return images
     
     def instantiate_pipeline(self, ckpt_name, scheduler_name, device):
         """Returns instantiated diffusion pipeline based on the given arguments"""
@@ -39,16 +40,17 @@ class StableDiffusion(object):
             
 
 
-
-
 if __name__ == "__main__":
     stable_diffusion = StableDiffusion(scheduler_name="euler")
-    print(stable_diffusion.pipeline)
+    #print(stable_diffusion.pipeline)
     #prompt = "An image of Johann Sebastian Bach while composing an opera on his wood table at night"
     #prompt = "An image of Mini Cooper on the roda, at a rainy night, in realistic style"
     #prompt = "a photo of an astronaut riding a horse on mars"
     #prompt = "a realistic photo of an Italian woman, 4K, colorful, wearing hat"
-    prompt = "an image of a lion in Monet style"
-    stable_diffusion.generate(prompt)
+    #prompt = "an image of a lion in Monet style"
+    #stable_diffusion.generate(prompt)
+    prompts = ["an image of a lion in Monet style", "an image of a lion in Picasso style"]
+    stable_diffusion.generate(prompts)
+
     
 
