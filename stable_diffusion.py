@@ -9,14 +9,19 @@ class StableDiffusion(object):
                  ckpt_name="runwayml/stable-diffusion-v1-5",
                  scheduler_name=None,
                  device=None):
+        self.module_dir = os.path.dirname(__file__)
         self.device = self.initialize_device(device)
         self.pipeline = self.instantiate_pipeline(ckpt_name, scheduler_name, self.device)
-    
+        self.create_dirs(self.module_dir)
+        
     def generate(self, prompts, save=True, show=True):
         "Returns the list of generated images based on given text prompts"
         images = self.pipeline(prompts).images
         for i, image in enumerate(images):
-            if save: image.save(f"generated_image_prompt_{i}.jpg")
+            if save: 
+                image.save(os.path.join(self.module_dir, 
+                                        "generated-images", 
+                                        f"generated_image_prompt_{i}.jpg"))
             if show: image.show()
         return images
     
@@ -37,6 +42,13 @@ class StableDiffusion(object):
             else:
                 device = "cpu"
         return torch.device(device)
+    
+    def create_dirs(self, root):
+        """Creates the required directories under given root directory"""
+        dir_names = ["generated-images"]
+        for dir_name in dir_names:
+            os.makedirs(os.path.join(root, dir_name), exist_ok=True)
+
             
 
 
@@ -49,7 +61,9 @@ if __name__ == "__main__":
     #prompt = "a realistic photo of an Italian woman, 4K, colorful, wearing hat"
     #prompt = "an image of a lion in Monet style"
     #stable_diffusion.generate(prompt)
-    prompts = ["an image of a lion in Monet style", "an image of a lion in Picasso style"]
+    #prompts = ["an image of a lion in Monet style", "an image of a lion in Picasso style"]
+    prompts = ["an image of a turtle in Monet style"]
+    prompts = ["an image of elephant in Camille Pissarro"]
     stable_diffusion.generate(prompts)
 
     
