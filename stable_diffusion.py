@@ -28,7 +28,9 @@ class StableDiffusion(object):
     def instantiate_pipeline(self, ckpt_name, scheduler_name, device):
         """Returns instantiated diffusion pipeline based on the given arguments"""
         pipeline = DiffusionPipeline.from_pretrained(ckpt_name, use_safetensors=True).to(device)
-        if scheduler_name == "euler":
+        if scheduler_name == "pndm":
+            pass
+        elif scheduler_name == "euler":
             pipeline.scheduler = EulerDiscreteScheduler.from_config(pipeline.scheduler.config)
         return pipeline
     
