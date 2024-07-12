@@ -56,7 +56,9 @@ options:
 ### Example usage
 
 ~~~
-python3 generate.py "an image of turtle in Picasso style" "an image of turtle in Camille Pissarro style"
+python3 generate.py\
+ "an image of turtle in Picasso style"\
+ "an image of turtle in Camille Pissarro style"
 ~~~
 
 The output images seen below (left: Picasso style, right: Pissaro style) will be saved into `generated-images` folder.
