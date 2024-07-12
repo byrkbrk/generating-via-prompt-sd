@@ -61,7 +61,7 @@ python3 generate.py\
  "an image of turtle in Camille Pissarro style"
 ~~~
 
-The output images seen below (left: Picasso style, right: Pissaro style) will be saved into `generated-images` folder.
+The output images seen below (left: Picasso style, right: Pissarro style) will be saved into `generated-images` folder.
 
 <p align="center">
   <img src="files-for-readme/picasso_turtle.jpg" width="49%" />
