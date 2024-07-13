@@ -52,22 +52,3 @@ class StableDiffusion(object):
         for dir_name in dir_names:
             os.makedirs(os.path.join(root, dir_name), exist_ok=True)
 
-            
-
-
-if __name__ == "__main__":
-    stable_diffusion = StableDiffusion(scheduler_name="euler")
-    #print(stable_diffusion.pipeline)
-    #prompt = "An image of Johann Sebastian Bach while composing an opera on his wood table at night"
-    #prompt = "An image of Mini Cooper on the roda, at a rainy night, in realistic style"
-    #prompt = "a photo of an astronaut riding a horse on mars"
-    #prompt = "a realistic photo of an Italian woman, 4K, colorful, wearing hat"
-    #prompt = "an image of a lion in Monet style"
-    #stable_diffusion.generate(prompt)
-    #prompts = ["an image of a lion in Monet style", "an image of a lion in Picasso style"]
-    prompts = ["an image of a turtle in Monet style"]
-    prompts = ["an image of elephant in Camille Pissarro"]
-    stable_diffusion.generate(prompts)
-
-    
-
