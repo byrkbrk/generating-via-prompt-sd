@@ -8,11 +8,12 @@ class StableDiffusion(object):
     def __init__(self, 
                  ckpt_name="runwayml/stable-diffusion-v1-5",
                  scheduler_name=None,
-                 device=None):
+                 device=None,
+                 create_dirs=True):
         self.module_dir = os.path.dirname(__file__)
         self.device = self.initialize_device(device)
         self.pipeline = self.instantiate_pipeline(ckpt_name, scheduler_name, self.device)
-        self.create_dirs(self.module_dir)
+        if create_dirs: self.create_dirs(self.module_dir)
         
     def generate(self, prompts, save=True, show=True):
         "Returns the list of generated images based on given text prompts"
