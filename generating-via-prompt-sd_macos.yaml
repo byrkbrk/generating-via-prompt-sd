@@ -12,3 +12,4 @@ dependencies:
   - accelerate
   - transformers
   - pillow
+  - gradio
