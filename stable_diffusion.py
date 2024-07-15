@@ -7,7 +7,7 @@ from diffusers import DiffusionPipeline, EulerDiscreteScheduler
 class StableDiffusion(object):
     def __init__(self, 
                  ckpt_name="runwayml/stable-diffusion-v1-5",
-                 scheduler_name=None,
+                 scheduler_name="pndm",
                  device=None,
                  create_dirs=True):
         self.module_dir = os.path.dirname(__file__)
