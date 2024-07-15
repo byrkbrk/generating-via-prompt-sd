@@ -1,4 +1,4 @@
-# Generating Image via Text Prompts using SD
+# Generating Image by Text Prompts using SD
 
 ## Introduction
 
