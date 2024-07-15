@@ -10,7 +10,8 @@ if __name__ == "__main__":
                                                                              save,
                                                                              show)[0],
         inputs=[gr.Textbox(lines=3, placeholder="an image of a turtle in Camille Pissarro style")],
-        outputs=gr.Image(type="pil")
+        outputs=gr.Image(type="pil"),
+        title="Stable Diffusion-v1-5"
     )
     gr_interface.launch()
 
