@@ -11,7 +11,12 @@ if __name__ == "__main__":
                                                                              show)[0],
         inputs=[gr.Textbox(lines=3, placeholder="an image of a turtle in Camille Pissarro style")],
         outputs=gr.Image(type="pil"),
-        title="Stable Diffusion-v1-5"
+        title="Stable Diffusion-v1-5",
+        examples=[
+            ['a picture of a lion in Claude Monet style'],
+            ["an image of turtle in Picasso style"],
+            ["an image of turtle in Camille Pissarro style"]
+        ]
     )
     gr_interface.launch()
 
